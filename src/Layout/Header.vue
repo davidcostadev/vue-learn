@@ -10,8 +10,9 @@
 
 <template>
   <header>
-    <h1>Meu teste pessoal</h1>
-    <p>{{ user}}</p>
+    <div class="container">
+      <h1>Vue Learn</h1>
+    </div>
   </header>
 </template>
 

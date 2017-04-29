@@ -1,11 +1,15 @@
 <template>
   <footer>
-    <p>footer</p>
+    <div class="container">
+      <p>footer</p>
+    </div>
   </footer>
 </template>
 
-<style>
+<style scoped>
   footer {
+    background: #212121;
+    color: #fff;
     padding: 7px 15px;
   }
 </style>
