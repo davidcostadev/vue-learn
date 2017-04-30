@@ -19,7 +19,12 @@
       return {
         message : 'Esse é o conteudo da página',
         active : false,
-        name : 'david'
+        name : 'david',
+        // v-model
+        input : {
+          name : 'David Costa',
+          boxCheckbox : 'none'
+        }
       };
     },
     /**
@@ -40,13 +45,36 @@
 
 <template>
   <div id="content" class="container">
-    <p> {{ message | upper }}</p>
-    <p> {{ message | limit 3 }} </p>
-    <p> {{ active ? 'ATIVO' : 'desativado' }}</p>
-    <!-- na versao anterior voce faria assim
-    <p id="'name-{{name}}">Meu nome</p> agora não é permitido
-    -->
-    <p :id="'name-'+name">Meu nome</p>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Indrodução, Filtors, Mounted e v-bind</div>
+      <div class="panel-body">
+        <p> {{ message | upper }}</p>
+        <p> {{ message | limit }} </p>
+        <p> {{ active ? 'ATIVO' : 'desativado' }}</p>
+        <!-- na versao anterior voce faria assim
+            <p id="'name-{{name}}">Meu nome</p> agora não é permitido na versao 2.0 do vue
+        -->
+        <p v-bind:id="'name-'+name">Meu nome</p>
+        <p :id="'name-'+name">Meu nome</p> <!-- mesma coisa de v-bind: -->
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">v-model</div>
+      <div class="panel-body">
+        <p>Usado para definir value para inputs</p>
+        <p>input.name: <b>{{ input.name }}</b></p>
+        <input type="text" v-model="input.name">
+
+        <hr>
+        <p>active: <b>{{ input.boxCheckbox }}</b></p>
+        <div id="box-checkbox" v-bind:class="input.boxCheckbox ? 'active' : ''"></div>
+        <div class="checkbox"><label><input type="checkbox" v-model="input.boxCheckbox" /> {{input.boxCheckbox ? 'Desativar' : 'Ativar' }}</label></div>
+
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -56,5 +84,13 @@
   }
   #name-david {
     color: red;
+  }
+  #box-checkbox {
+    width: 30px;
+    height: 30px;
+    background: red;
+  }
+  #box-checkbox.active {
+    background: green;
   }
 </style>
