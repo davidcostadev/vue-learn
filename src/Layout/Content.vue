@@ -65,7 +65,19 @@
       <div class="panel-body">
         <p>Usado para definir value para inputs</p>
         <p>input.name: <b>{{ input.name }}</b></p>
-        <input type="text" v-model="input.name">
+        <div class="form-group">
+          <label for="" class="control-label">Normal</label>
+          <input type="text" v-model="input.name" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="" class="control-label">Com lazy</label>
+          <input type="text" v-model.lazy="input.name" class="form-control">
+           <!-- Migration -> https://vuejs.org/v2/guide/migration.html#lazy-or-number-Param-Attributes-for-v-model-replaced -->
+        </div>
+        <div class="form-group">
+          <label for="" class="control-label">Com debounce</label>
+          <input type="text" v-model="input.name" class="form-control" debounce="400">
+        </div>
 
         <hr>
         <p>active: <b>{{ input.boxCheckbox }}</b></p>
