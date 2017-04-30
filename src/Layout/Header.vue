@@ -5,7 +5,7 @@
         user : store => store.user
       }
     },
-  }
+  };
 </script>
 
 <template>

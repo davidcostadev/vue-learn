@@ -1,11 +1,11 @@
 <script>
-  import HeaderPage from './Layout/Header.vue'
-  import ContentPage from './Layout/Content.vue'
-  import FooterPage from './Layout/Footer.vue'
+  import HeaderPage from './Layout/Header.vue';
+  import ContentPage from './Layout/Content.vue';
+  import FooterPage from './Layout/Footer.vue';
   
   export default {
     components : { HeaderPage, ContentPage, FooterPage }
-  }
+  };
 </script>
 
 <template>
