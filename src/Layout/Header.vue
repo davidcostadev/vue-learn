@@ -4,7 +4,7 @@
       getters : {
         user : store => store.user
       }
-    },
+    }
   };
 </script>
 
