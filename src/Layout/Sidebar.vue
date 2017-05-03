@@ -17,7 +17,8 @@
 <template>
   <div id="sidebar" class="col-xs-12 col-sm-4 col-md-3">
     <ul class="list-group">
-      <li class="list-group-item"><a href="#">asd</a></li>
+      <li class="list-group-item" v-for="menuitem in menu">
+        <a :href="menuitem.link">{{menuitem.text}}</a></li>
     </ul>
   </div>
 </template>
