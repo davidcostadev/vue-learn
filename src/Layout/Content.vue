@@ -27,7 +27,9 @@
           name : 'David Costa',
           boxCheckbox : 'none',
           selector : 'blue',
-          multiple : null
+          multiple : [],
+          active : null,
+          show : false
         }
       };
     },
@@ -120,7 +122,7 @@
             </div>
 
 
-            <h3>Selector muilt</h3>
+            <h3>Selector muilt e checbox</h3>
 
             <div class="form-group">
               <select class="form-control" v-model="input.multiple" multiple>
@@ -130,11 +132,58 @@
               </select>
             </div>
 
+            <div class="form-group">
+              <div class="checkbox"><label><input type="checkbox" value="blue" v-model="input.multiple"></label> Azul</div>
+              <div class="checkbox"><label><input type="checkbox" value="red" v-model="input.multiple"></label> Red</div>
+              <div class="checkbox"><label><input type="checkbox" value="green" v-model="input.multiple"></label> Green</div>
+            </div>
+
             <div class="panel panel-default">
               <div class="panel-body">
                 input.selector {{ input.multiple }}
               </div>
             </div>
+
+            <div class="form-group">
+              <div class="checkbox"><label><input type="checkbox" :false-value="'INATIVO'" :true-value="'ATIVO'" v-model="input.active"> ATIVO?</label></div>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                input.active {{ input.active }}
+              </div>
+            </div>
+
+            <h3>v-if v-show</h3>
+
+
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"  v-model="input.show"> Mostrar?</label>
+              </div>
+            </div>
+
+
+            <div class="panel panel-default" v-show="input.show">
+              <div class="panel-body" style="background: red">
+                input.show {{ input.show }}
+              </div>
+            </div>
+            <div class="panel panel-default" v-if="!input.show">
+              <div class="panel-body" style="background: green">
+                input.show {{ input.show }}
+              </div>
+            </div>
+
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                input.show {{ input.show }}
+              </div>
+            </div>
+
+
 
 
           </div>
