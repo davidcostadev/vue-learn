@@ -25,7 +25,9 @@
         // v-model
         input : {
           name : 'David Costa',
-          boxCheckbox : 'none'
+          boxCheckbox : 'none',
+          selector : 'blue',
+          multiple : null
         }
       };
     },
@@ -46,8 +48,8 @@
 </script>
 
 <template>
-  <div class="row">
-    <div class="container">
+  <div class="container">
+    <div class="row">
 
       <div id="content" class="col-xs-12 col-sm-8 col-md-9">
 
@@ -90,6 +92,50 @@
             <p>active: <b>{{ input.boxCheckbox }}</b></p>
             <div id="box-checkbox" v-bind:class="input.boxCheckbox ? 'active' : ''"></div>
             <div class="checkbox"><label><input type="checkbox" v-model="input.boxCheckbox" /> {{input.boxCheckbox ? 'Desativar' : 'Ativar' }}</label></div>
+
+            <h3>Radio</h3>
+
+            <div class="form-group">
+              <div class="radio"><label for="radio-active-on"><input type="radio" id="radio-active-on" :value="true" v-model="input.boxCheckbox"> Ativo</label></div>
+              <div class="radio"><label for="radio-active-off"><input type="radio" id="radio-active-off" :value="false" v-model="input.boxCheckbox"> Desativado</label></div>
+            </div>
+
+            <pre>{{$data}}</pre>
+
+
+            <h3>Select</h3>
+
+            <div class="form-group">
+              <select class="form-control" v-model="input.selector">
+                <option value="blue">Azul</option>
+                <option value="red">Vermelha</option>
+                <option value="green">Verde</option>
+              </select>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                input.selector {{ input.selector }}
+              </div>
+            </div>
+
+
+            <h3>Selector muilt</h3>
+
+            <div class="form-group">
+              <select class="form-control" v-model="input.multiple" multiple>
+                <option value="blue">Azul</option>
+                <option value="red">Vermelha</option>
+                <option value="green">Verde</option>
+              </select>
+            </div>
+
+            <div class="panel panel-default">
+              <div class="panel-body">
+                input.selector {{ input.multiple }}
+              </div>
+            </div>
+
 
           </div>
         </div>
