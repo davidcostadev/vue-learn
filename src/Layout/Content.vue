@@ -23,10 +23,23 @@
         active : false,
         name : 'david',
         // v-model
+        cars : [
+          {
+            model : 'GOl',
+            brand : 'volkswagen'
+          },
+          {
+            model : 'Uno',
+            brand : 'Fiat'
+          }
+        ],
         input : {
           name : 'David Costa',
           boxCheckbox : 'none',
           selector : 'blue',
+          carIndex : {},
+          carRadio : {},
+          carCheckbox : [],
           multiple : [],
           active : null,
           show : false
@@ -183,6 +196,63 @@
               </div>
             </div>
 
+
+            <h3>Selector With Info</h3>
+
+
+            <string>Index</string>
+            <pre>{{input.carIndex}}</pre>
+
+            <div class="panel panel-defualt">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Index</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(car, index) in cars">
+                    <td>{{ index }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.brand }}</td>
+                    <td>
+                      <input type="radio" :value="index" v-model="input.carIndex">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+
+            <string>Radio</string>
+            <pre>{{input.carRadio}}</pre>
+
+            <string>Checkbox</string>
+            <pre>{{input.carCheckbox}}</pre>
+
+            <div class="panel panel-defualt">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Radio</th>
+                    <th>checkbox</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="car in cars">
+                    <td>{{ car.model }}</td>
+                    <td>{{ car.brand }}</td>
+                    <td><input type="radio" :value="car" v-model="input.carRadio"></td>
+                    <td><input type="checkbox" :value="car" v-model="input.carCheckbox"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
 
 
 
