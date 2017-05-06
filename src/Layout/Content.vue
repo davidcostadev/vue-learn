@@ -32,9 +32,9 @@
           { name : 'Fabiano', selected : false }
         ],
 
-        activeFriends : [
+        // activeFriends : [ usando com watch
 
-        ],
+        // ],
         cars : [
           {
             model : 'GOl',
@@ -64,20 +64,25 @@
         this.log.push({ time : new Date(), value : oldValue });
         console.log('sdfsdfsd');
         console.log(value, oldValue);
-      },
-      friends : {
-        handler (value) {
-          this.loadSelected();
-        },
-        deep : true
       }
+      // friends : {
+      //   handler (value) {
+      //     this.loadSelected();
+      //   },
+      //   deep : true
+      // }
 
     },
-    methods : {
-      loadSelected () {
-        this.activeFriends = this.friends.filter(s => s.selected === true);
+    computed : {
+      activeFriends () {
+        return this.friends.filter(s => s.selected === true);
       }
     },
+    // methods : {
+    //   loadSelected () {
+    //     this.activeFriends = this.friends.filter(s => s.selected === true);
+    //   }
+    // },
     // watch () { // this way dont work
     //   console.log('this way dont work');
     // },
@@ -88,7 +93,7 @@
     mounted () {
       console.log(this);
 
-      this.loadSelected();
+      // this.loadSelected();
 
       setTimeout(() => {
         this.message = 'legal de mais, realmente isso aqui é muito legal';
