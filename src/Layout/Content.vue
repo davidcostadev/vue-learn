@@ -32,6 +32,11 @@
           { name : 'Fabiano', selected : false }
         ],
 
+        person : {
+          name : 'David',
+          job : 'Programador'
+        },
+
         // activeFriends : [ usando com watch
 
         // ],
@@ -76,6 +81,20 @@
     computed : {
       activeFriends () {
         return this.friends.filter(s => s.selected === true);
+      },
+      // bio () {
+      //   return `${this.person.name} - ${this.person.job}`;
+      // }
+      bio : {
+        get () {
+          return `${this.person.name} ${this.person.job}`;
+        },
+        set (value) {
+          const [first, ...last] = value.split(' ');
+
+          this.person.name = first;
+          this.person.job = last.join(' ');
+        }
       }
     },
     // methods : {
@@ -338,7 +357,7 @@
               </div>
             </div>
 
-            <h3>Avançado</h3>
+            <h3>Avançado e Computed</h3>
 
             <div class="panel default">
               <div class="panel-body">
@@ -361,6 +380,23 @@
                 </tbody>
               </table>
             </div>
+
+            <h3>Computeed</h3>
+            <form class="form">
+              <div class="form-group">
+                <label for="" class="control-label">Nome</label>
+                <input type="text" class="form-control" v-model="person.name">
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">Cargo</label>
+                <input type="text" class="form-control" v-model="person.job">
+              </div>
+              <div class="form-group">
+                <label for="" class="control-label">BIOS</label>
+                <input type="text" class="form-control" v-model="bio">
+              </div>
+
+            </form>
           </div>
         </div>
 
