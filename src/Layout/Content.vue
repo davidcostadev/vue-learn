@@ -24,7 +24,17 @@
         name : 'david',
         testeWatch : true,
         log : [],
-        // v-model
+        // v-modele
+        friends : [
+          { name : 'Jhonny', selected : true },
+          { name : 'Jessuir', selected : false },
+          { name : 'DVD', selected : false },
+          { name : 'Fabiano', selected : false }
+        ],
+
+        activeFriends : [
+
+        ],
         cars : [
           {
             model : 'GOl',
@@ -54,6 +64,18 @@
         this.log.push({ time : new Date(), value : oldValue });
         console.log('sdfsdfsd');
         console.log(value, oldValue);
+      },
+      friends : {
+        handler (value) {
+          this.loadSelected();
+        },
+        deep : true
+      }
+
+    },
+    methods : {
+      loadSelected () {
+        this.activeFriends = this.friends.filter(s => s.selected === true);
       }
     },
     // watch () { // this way dont work
@@ -65,6 +87,9 @@
      */
     mounted () {
       console.log(this);
+
+      this.loadSelected();
+
       setTimeout(() => {
         this.message = 'legal de mais, realmente isso aqui é muito legal';
       }, 1000 * 5);
@@ -295,7 +320,10 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
+
+            <h3>Basico</h3>
             <pre>{{testeWatch}}</pre>
+            <p>Log:</p>
             <pre>{{log}}</pre>
             <div class="form-group">
               <div class="checkbox">
@@ -303,6 +331,30 @@
                   <input type="checkbox" v-model="testeWatch"> algo
                 </label>
               </div>
+            </div>
+
+            <h3>Avançado</h3>
+
+            <div class="panel default">
+              <div class="panel-body">
+                <pre>{{activeFriends}}</pre>
+              </div>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="friend in friends">
+                    <td>{{friend.name}}</td>
+                    <td>
+                      <input type="checkbox" :value="friend" v-model="friend.selected">
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
