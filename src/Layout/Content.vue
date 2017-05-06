@@ -22,6 +22,8 @@
         message : 'Esse é o conteudo da página',
         active : false,
         name : 'david',
+        testeWatch : true,
+        log : [],
         // v-model
         cars : [
           {
@@ -46,6 +48,18 @@
         }
       };
     },
+    watch : {
+      // return {
+      testeWatch (value, oldValue) {
+        this.log.push({ time : new Date(), value : oldValue });
+        console.log('sdfsdfsd');
+        console.log(value, oldValue);
+      }
+    },
+    // watch () { // this way dont work
+    //   console.log('this way dont work');
+    // },
+
     /**
      * Na versão anterior era ready
      */
@@ -62,6 +76,7 @@
   };
 </script>
 
+
 <template>
   <div class="container">
     <div class="row">
@@ -75,11 +90,10 @@
             <p> {{ message | upper }}</p>
             <p> {{ message | limit }} </p>
             <p> {{ active ? 'ATIVO' : 'desativado' }}</p>
-            <!-- na versao anterior voce faria assim
-                <p id="'name-{{name}}">Meu nome</p> agora não é permitido na versao 2.0 do vue
-            -->
+
             <p v-bind:id="'name-'+name">Meu nome</p>
-            <p :id="'name-'+name">Meu nome</p> <!-- mesma coisa de v-bind: -->
+            <p :id="'name-'+name">Meu nome</p>
+            <!-- mesma coisa de v-bind: -->
           </div>
         </div>
 
@@ -87,6 +101,9 @@
 
         <div class="panel panel-default">
           <div class="panel-body">
+
+
+
             <p>Usado para definir value para inputs</p>
             <p>input.name: <b>{{ input.name }}</b></p>
             <div class="form-group">
@@ -106,17 +123,25 @@
             <hr>
             <p>active: <b>{{ input.boxCheckbox }}</b></p>
             <div id="box-checkbox" v-bind:class="input.boxCheckbox ? 'active' : ''"></div>
-            <div class="checkbox"><label><input type="checkbox" v-model="input.boxCheckbox" /> {{input.boxCheckbox ? 'Desativar' : 'Ativar' }}</label></div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" v-model="input.boxCheckbox" /> {{input.boxCheckbox ? 'Desativar' : 'Ativar' }}</label>
+            </div>
 
             <h3>Radio</h3>
 
             <div class="form-group">
-              <div class="radio"><label for="radio-active-on"><input type="radio" id="radio-active-on" :value="true" v-model="input.boxCheckbox"> Ativo</label></div>
-              <div class="radio"><label for="radio-active-off"><input type="radio" id="radio-active-off" :value="false" v-model="input.boxCheckbox"> Desativado</label></div>
+              <div class="radio">
+                <label for="radio-active-on">
+                  <input type="radio" id="radio-active-on" :value="true" v-model="input.boxCheckbox"> Ativo</label>
+              </div>
+              <div class="radio">
+                <label for="radio-active-off">
+                  <input type="radio" id="radio-active-off" :value="false" v-model="input.boxCheckbox"> Desativado</label>
+              </div>
             </div>
 
             <pre>{{$data}}</pre>
-
 
             <h3>Select</h3>
 
@@ -134,7 +159,6 @@
               </div>
             </div>
 
-
             <h3>Selector muilt e checbox</h3>
 
             <div class="form-group">
@@ -146,9 +170,18 @@
             </div>
 
             <div class="form-group">
-              <div class="checkbox"><label><input type="checkbox" value="blue" v-model="input.multiple"></label> Azul</div>
-              <div class="checkbox"><label><input type="checkbox" value="red" v-model="input.multiple"></label> Red</div>
-              <div class="checkbox"><label><input type="checkbox" value="green" v-model="input.multiple"></label> Green</div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="blue" v-model="input.multiple">
+                </label> Azul</div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="red" v-model="input.multiple">
+                </label> Red</div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="green" v-model="input.multiple">
+                </label> Green</div>
             </div>
 
             <div class="panel panel-default">
@@ -158,7 +191,10 @@
             </div>
 
             <div class="form-group">
-              <div class="checkbox"><label><input type="checkbox" :false-value="'INATIVO'" :true-value="'ATIVO'" v-model="input.active"> ATIVO?</label></div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" :false-value="'INATIVO'" :true-value="'ATIVO'" v-model="input.active"> ATIVO?</label>
+              </div>
             </div>
 
             <div class="panel panel-default">
@@ -169,14 +205,12 @@
 
             <h3>v-if v-show</h3>
 
-
             <div class="form-group">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"  v-model="input.show"> Mostrar?</label>
+                  <input type="checkbox" v-model="input.show"> Mostrar?</label>
               </div>
             </div>
-
 
             <div class="panel panel-default" v-show="input.show">
               <div class="panel-body" style="background: red">
@@ -189,18 +223,15 @@
               </div>
             </div>
 
-
             <div class="panel panel-default">
               <div class="panel-body">
                 input.show {{ input.show }}
               </div>
             </div>
 
-
             <h3>Selector With Info</h3>
 
-
-            <string>Index</string>
+            <strong>Index</strong>
             <pre>{{input.carIndex}}</pre>
 
             <div class="panel panel-defualt">
@@ -226,11 +257,10 @@
               </table>
             </div>
 
-
-            <string>Radio</string>
+            <strong>Radio</strong>
             <pre>{{input.carRadio}}</pre>
 
-            <string>Checkbox</string>
+            <strong>Checkbox</strong>
             <pre>{{input.carCheckbox}}</pre>
 
             <div class="panel panel-defualt">
@@ -247,15 +277,33 @@
                   <tr v-for="car in cars">
                     <td>{{ car.model }}</td>
                     <td>{{ car.brand }}</td>
-                    <td><input type="radio" :value="car" v-model="input.carRadio"></td>
-                    <td><input type="checkbox" :value="car" v-model="input.carCheckbox"></td>
+                    <td>
+                      <input type="radio" :value="car" v-model="input.carRadio">
+                    </td>
+                    <td>
+                      <input type="checkbox" :value="car" v-model="input.carCheckbox">
+                    </td>
                   </tr>
                 </tbody>
               </table>
             </div>
 
+          </div>
+        </div>
 
+        <h2><a href="watches">Watch</a></h2>
 
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <pre>{{testeWatch}}</pre>
+            <pre>{{log}}</pre>
+            <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" v-model="testeWatch"> algo
+                </label>
+              </div>
+            </div>
           </div>
         </div>
 
