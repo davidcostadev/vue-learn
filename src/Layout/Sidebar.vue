@@ -5,8 +5,9 @@
     data () {
       return {
         menu : [
-          { text : 'Filtros', link : '#' },
-          { text : 'v-model', link : '#' }
+          { text : 'Inicio', link : '#inicio' },
+          { text : 'v-model', link : '#model' },
+          { text : 'watch', link : '#watch' }
         ]
       };
     }

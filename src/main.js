@@ -1,13 +1,12 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import App from './App.vue'
-
+import Vue from 'vue';
+import Vuex from 'vuex';
+import App from './App.vue';
 
 Vue.use(Vuex);
 
 new Vue({
-  el: '#app',
-  render: h => h(App),
+  el : '#app',
+  render : h => h(App),
   store : new Vuex.Store({
     state : {
       user : {
@@ -15,7 +14,7 @@ new Vue({
         email : 'davidcostadev@gmail.com'
       }
     },
-    mutations: {},
+    mutations : {},
     strict : true
   })
-})
+});
