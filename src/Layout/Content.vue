@@ -425,7 +425,7 @@
 
 <style>
   #content {
-    /*padding: 0px 16px;*/
+    margin-top: 30px;
   }
   #name-david {
     color: red;
