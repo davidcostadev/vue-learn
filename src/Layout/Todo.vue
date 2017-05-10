@@ -6,7 +6,7 @@
         <div class="panel-body">
           <div class="input-group">
             <input type="text" class="form-control" v-model="newTask.title" placeholder="Nova Tarefa">
-            <div class="input-group-btn"><button class="btn btn-info">Adicionar</button></div>
+            <div class="input-group-btn"><button class="btn btn-info" :disabled="!canAddNewTask">Adicionar</button></div>
           </div>
         </div>
       </div>
@@ -27,13 +27,13 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="task in tasks" v-bind:class="task.complete === true ? 'success' : ''">
+          <tr v-for="(task, index) in tasks" v-bind:class="task.complete === true ? 'success' : ''">
             <td>
               <input type="checkbox" v-model="task.complete">
             </td>
             <td class="title">{{task.title}}</td>
             <td>
-              <button class="btn btn-xs btn-danger"><i class="glyphicon glyphicon-remove"></i></button>
+              <button class="btn btn-xs btn-danger" v-on:click="removeTask(index)"><i class="glyphicon glyphicon-remove"></i></button>
             </td>
           </tr>
         </tbody>
@@ -62,16 +62,31 @@
         }
       };
     },
+    computed : {
+      canAddNewTask () {
+        return this.newTask.title.length > 0;
+      }
+    },
     methods : {
       onSubmit () {
-        // const task = this.newTask;
-        const task = {
-          title : this.newTask.title,
-          complete : false
-        };
-        this.newTask.title = '';
+        if (this.canAddNewTask) {
+          const task = {
+            title : this.newTask.title,
+            complete : false
+          };
+          this.newTask.title = '';
 
-        this.tasks.push(task);
+          this.tasks.push(task);
+        }
+      },
+      removeTask (index) {
+        console.log(index);
+
+        // const index = this.tasks.indexOf(task);
+
+        if (index > -1) {
+          this.tasks.splice(index, 1);
+        }
       }
     }
   };
