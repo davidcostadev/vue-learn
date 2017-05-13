@@ -2,15 +2,15 @@
 <script>
 
   export default {
-    data () {
+    data() {
       return {
-        menu : [
-          { text : 'Inicio', link : '#inicio' },
-          { text : 'v-model', link : '#model' },
-          { text : 'watch', link : '#watch' }
-        ]
+        menu: [
+          { text: 'Inicio', link: '#inicio' },
+          { text: 'v-model', link: '#model' },
+          { text: 'watch', link: '#watch' },
+        ],
       };
-    }
+    },
   };
 
 </script>

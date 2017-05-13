@@ -1,21 +1,29 @@
-<script>
-  import HeaderPage from './Layout/Header.vue';
-  import ContentPage from './Layout/Content.vue';
-  import FooterPage from './Layout/Footer.vue';
 
-  export default {
-    components : { HeaderPage, ContentPage, FooterPage }
-  };
+<script>
+import HeaderPage from './layout/Header';
+import FooterPage from './layout/Footer';
+
+export default {
+  name: 'app',
+  components: { HeaderPage, FooterPage },
+};
 </script>
 
 <template>
   <div id="wrapper">
     <header-page></header-page>
-    <content-page></content-page>
+    <router-view></router-view>
     <footer-page></footer-page>
   </div>
 </template>
 
-<style sass>
-
+<style>
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>

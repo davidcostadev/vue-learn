@@ -45,50 +45,50 @@
 
 <script>
   export default {
-    data () {
+    data() {
       return {
-        tasks : [
+        tasks: [
           {
-            title : 'Tarefa 1',
-            complete : false
+            title: 'Tarefa 1',
+            complete: false,
           },
           {
-            title : 'Tarefa 2',
-            complete : true
-          }
+            title: 'Tarefa 2',
+            complete: true,
+          },
         ],
-        newTask : {
-          title : ''
-        }
+        newTask: {
+          title: '',
+        },
       };
     },
-    computed : {
-      canAddNewTask () {
+    computed: {
+      canAddNewTask() {
         return this.newTask.title.length > 0;
-      }
+      },
     },
-    methods : {
-      onSubmit () {
+    methods: {
+      onSubmit() {
         if (this.canAddNewTask) {
           const task = {
-            title : this.newTask.title,
-            complete : false
+            title: this.newTask.title,
+            complete: false,
           };
           this.newTask.title = '';
 
           this.tasks.push(task);
         }
       },
-      removeTask (index) {
-        console.log(index);
+      removeTask(index) {
+        // console.log(index);
 
         // const index = this.tasks.indexOf(task);
 
         if (index > -1) {
           this.tasks.splice(index, 1);
         }
-      }
-    }
+      },
+    },
   };
 </script>
 

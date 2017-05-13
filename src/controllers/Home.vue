@@ -1,130 +1,130 @@
 
 <script>
-  import Vue from 'vue';
-  import Sidebar from './Sidebar.vue';
-  import Todo from './Todo.vue';
+import Vue from 'vue';
+import Sidebar from '../layout/Sidebar';
+import Todo from '../layout/Todo';
 
-  Vue.filter('upper', (value) => value.toUpperCase());
+// Vue.filter('upper', (value) => value.toUpperCase());
 
-  Vue.filter('limit', (value, limit = 15) => {
-    const length = value.length;
+Vue.filter('limit', (value, limit = 15) => {
+  const length = value.length;
 
-    if (length <= limit) {
-      return value;
-    }
+  if (length <= limit) {
+    return value;
+  }
 
-    return `${value.substr(0, limit)}`;
-  });
+  return `${value.substr(0, limit)}`;
+});
 
-  export default {
-    components : { Sidebar, Todo },
-    data () {
-      return {
-        message : 'Esse é o conteudo da página',
-        active : false,
-        name : 'david',
-        testeWatch : true,
-        log : [],
-        // v-modele
-        friends : [
-          { name : 'Jhonny', selected : true },
-          { name : 'Jessuir', selected : false },
-          { name : 'DVD', selected : false },
-          { name : 'Fabiano', selected : false }
-        ],
+export default {
+  components: { Sidebar, Todo },
+  data() {
+    return {
+      message: 'Esse é o conteudo da página',
+      active: false,
+      name: 'david',
+      testeWatch: true,
+      log: [],
+      // v-modele
+      friends: [
+        { name: 'Jhonny', selected: true },
+        { name: 'Jessuir', selected: false },
+        { name: 'DVD', selected: false },
+        { name: 'Fabiano', selected: false },
+      ],
 
-        person : {
-          name : 'David',
-          job : 'Programador'
-        },
-
-        // activeFriends : [ usando com watch
-
-        // ],
-        cars : [
-          {
-            model : 'GOl',
-            brand : 'volkswagen'
-          },
-          {
-            model : 'Uno',
-            brand : 'Fiat'
-          }
-        ],
-        input : {
-          name : 'David Costa',
-          boxCheckbox : 'none',
-          selector : 'blue',
-          carIndex : {},
-          carRadio : {},
-          carCheckbox : [],
-          multiple : [],
-          active : null,
-          show : false
-        }
-      };
-    },
-    watch : {
-      // return {
-      testeWatch (value, oldValue) {
-        this.log.push({ time : new Date(), value : oldValue });
-        console.log('sdfsdfsd');
-        console.log(value, oldValue);
-      }
-      // friends : {
-      //   handler (value) {
-      //     this.loadSelected();
-      //   },
-      //   deep : true
-      // }
-
-    },
-    computed : {
-      activeFriends () {
-        return this.friends.filter(s => s.selected === true);
+      person: {
+        name: 'David',
+        job: 'Programador',
       },
-      // bio () {
-      //   return `${this.person.name} - ${this.person.job}`;
-      // }
-      bio : {
-        get () {
-          return `${this.person.name} ${this.person.job}`;
+
+      // activeFriends : [ usando com watch
+
+      // ],
+      cars: [
+        {
+          model: 'GOl',
+          brand: 'volkswagen',
         },
-        set (value) {
-          const [first, ...last] = value.split(' ');
-
-          this.person.name = first;
-          this.person.job = last.join(' ');
-        }
-      }
+        {
+          model: 'Uno',
+          brand: 'Fiat',
+        },
+      ],
+      input: {
+        name: 'David Costa',
+        boxCheckbox: 'none',
+        selector: 'blue',
+        carIndex: {},
+        carRadio: {},
+        carCheckbox: [],
+        multiple: [],
+        active: null,
+        show: false,
+      },
+    };
+  },
+  watch: {
+    // return {
+    testeWatch(value, oldValue) {
+      this.log.push({ time: new Date(), value: oldValue });
+      // console.log('sdfsdfsd');
+      // console.log(value, oldValue);
     },
+    // friends : {
+    //   handler (value) {
+    //     this.loadSelected();
+    //   },
+    //   deep : true
+    // }
 
-    // methods : {
-    //   loadSelected () {
-    //     this.activeFriends = this.friends.filter(s => s.selected === true);
-    //   }
-    // },
-    // watch () { // this way dont work
-    //   console.log('this way dont work');
-    // },
-
-    /**
-     * Na versão anterior era ready
-     */
-    mounted () {
-      console.log(this);
-
-      // this.loadSelected();
-
-      setTimeout(() => {
-        this.message = 'legal de mais, realmente isso aqui é muito legal';
-      }, 1000 * 5);
+  },
+  computed: {
+    activeFriends() {
+      return this.friends.filter(s => s.selected === true);
     },
-    /**
-     * @deprecated
-     */
-    ready () { }
-  };
+    // bio () {
+    //   return `${this.person.name} - ${this.person.job}`;
+    // }
+    bio: {
+      get() {
+        return `${this.person.name} ${this.person.job}`;
+      },
+      set(value) {
+        const [first, ...last] = value.split(' ');
+
+        this.person.name = first;
+        this.person.job = last.join(' ');
+      },
+    },
+  },
+
+  // methods : {
+  //   loadSelected () {
+  //     this.activeFriends = this.friends.filter(s => s.selected === true);
+  //   }
+  // },
+  // watch () { // this way dont work
+  //   console.log('this way dont work');
+  // },
+
+  /**
+   * Na versão anterior era ready
+   */
+  mounted() {
+    // console.log(this);
+
+    // this.loadSelected();
+
+    setTimeout(() => {
+      this.message = 'legal de mais, realmente isso aqui é muito legal';
+    }, 1000 * 5);
+  },
+  /**
+   * @deprecated
+   */
+  // ready() { }
+};
 </script>
 
 
@@ -137,7 +137,9 @@
         <Todo></Todo>
 
         <div id="inicio">
-          <h2><a href="#">Indrodução, Filtors, Mounted e v-bind</a></h2>
+          <h2>
+            <a href="#">Indrodução, Filtors, Mounted e v-bind</a>
+          </h2>
 
           <div class="panel panel-default">
             <div class="panel-body">
@@ -151,21 +153,20 @@
             </div>
           </div>
 
-
-
         </div>
 
-
         <div id="model">
-          <h2><a href="#">v-model</a></h2>
+          <h2>
+            <a href="#">v-model</a>
+          </h2>
 
           <div class="panel panel-default">
             <div class="panel-body">
 
-
-
               <p>Usado para definir value para inputs</p>
-              <p>input.name: <b>{{ input.name }}</b></p>
+              <p>input.name:
+                <b>{{ input.name }}</b>
+              </p>
               <div class="form-group">
                 <label for="" class="control-label">Normal</label>
                 <input type="text" v-model="input.name" class="form-control">
@@ -181,7 +182,9 @@
               </div>
 
               <hr>
-              <p>active: <b>{{ input.boxCheckbox }}</b></p>
+              <p>active:
+                <b>{{ input.boxCheckbox }}</b>
+              </p>
               <div id="box-checkbox" v-bind:class="input.boxCheckbox ? 'active' : ''"></div>
               <div class="checkbox">
                 <label>
@@ -354,7 +357,9 @@
 
         <div id="watch">
 
-          <h2><a href="watches">Watch</a></h2>
+          <h2>
+            <a href="watches">Watch</a>
+          </h2>
 
           <div class="panel panel-default">
             <div class="panel-body">
@@ -424,18 +429,21 @@
 </template>
 
 <style>
-  #content {
-    margin-top: 30px;
-  }
-  #name-david {
-    color: red;
-  }
-  #box-checkbox {
-    width: 30px;
-    height: 30px;
-    background: red;
-  }
-  #box-checkbox.active {
-    background: green;
-  }
+#content {
+  margin-top: 30px;
+}
+
+#name-david {
+  color: red;
+}
+
+#box-checkbox {
+  width: 30px;
+  height: 30px;
+  background: red;
+}
+
+#box-checkbox.active {
+  background: green;
+}
 </style>

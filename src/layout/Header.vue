@@ -1,12 +1,3 @@
-<script>
-  export default {
-    vuex : {
-      getters : {
-        user : store => store.user
-      }
-    }
-  };
-</script>
 
 <template>
   <header>
