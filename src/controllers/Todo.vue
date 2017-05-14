@@ -6,7 +6,9 @@
         <div class="panel-body">
           <div class="input-group">
             <input type="text" class="form-control" v-model="newTask.title" placeholder="Nova Tarefa">
-            <div class="input-group-btn"><button class="btn btn-info" :disabled="!canAddNewTask">Adicionar</button></div>
+            <div class="input-group-btn">
+              <button class="btn btn-info" :disabled="!canAddNewTask">Adicionar</button>
+            </div>
           </div>
         </div>
       </div>
@@ -33,7 +35,9 @@
             </td>
             <td class="title">{{task.title}}</td>
             <td>
-              <button class="btn btn-xs btn-danger" v-on:click="removeTask(index)"><i class="glyphicon glyphicon-remove"></i></button>
+              <button class="btn btn-xs btn-danger" v-on:click="removeTask(index)">
+                <i class="glyphicon glyphicon-remove"></i>
+              </button>
             </td>
           </tr>
         </tbody>
@@ -93,7 +97,7 @@
 </script>
 
 <style scoped>
-  .success .title {
-    text-decoration: line-through;
-  }
+.success .title {
+  text-decoration: line-through;
+}
 </style>

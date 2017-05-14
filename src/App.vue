@@ -12,7 +12,9 @@ export default {
 <template>
   <div id="wrapper">
     <header-page></header-page>
-    <router-view></router-view>
+    <div id="content" class="container">
+      <router-view></router-view>
+    </div>
     <footer-page></footer-page>
   </div>
 </template>
@@ -26,4 +28,10 @@ export default {
     color: #2c3e50;
     margin-top: 60px;
   }
+
+#content {
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
 </style>

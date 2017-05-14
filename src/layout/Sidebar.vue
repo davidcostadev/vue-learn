@@ -5,9 +5,9 @@
     data() {
       return {
         menu: [
-          { text: 'Inicio', link: '#inicio' },
-          { text: 'v-model', link: '#model' },
-          { text: 'watch', link: '#watch' },
+          { text: 'Inicio', link: '/#inicio' },
+          { text: 'v-model', link: '/#model' },
+          { text: 'watch', link: '/#watch' },
         ],
       };
     },
