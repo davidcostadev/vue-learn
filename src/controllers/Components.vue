@@ -28,11 +28,12 @@
   };
 </script>
 
-
 <template>
   <div>
     <h1>Componentes</h1>
-    <card-list v-bind:cards="cards" class="row" class-name="col-md-3"></card-list>
+    <card-list
+      v-bind:cards="cards"
+      class-name="col-md-3"
+      class="row"></card-list>
   </div>
 </template>
-
