@@ -424,17 +424,15 @@ export default {
 </template>
 
 <style>
-#name-david {
-  color: red;
-}
-
-#box-checkbox {
-  width: 30px;
-  height: 30px;
-  background: red;
-}
-
-#box-checkbox.active {
-  background: green;
-}
+  #name-david {
+    color: red;
+  }
+  #box-checkbox {
+    width: 30px;
+    height: 30px;
+    background: red;
+  }
+  #box-checkbox.active {
+    background: green;
+  }
 </style>
