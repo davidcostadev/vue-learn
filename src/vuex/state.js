@@ -1,3 +1,4 @@
+
 export default {
-  token: 'adsadnjsandkjsankdjnsajdnjksankdjnsa',
+  token: 'sad sad sa dsa dsa',
 };
