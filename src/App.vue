@@ -1,9 +1,18 @@
 
 <script>
+
 import HeaderPage from './layout/Header';
 import FooterPage from './layout/Footer';
 
 export default {
+  vuex: {
+    getters: {
+      token: (state) => {
+        window.console.log(state);
+        return state.token;
+      },
+    },
+  },
   name: 'app',
   components: { HeaderPage, FooterPage },
 };
@@ -11,6 +20,7 @@ export default {
 
 <template>
   <div id="wrapper">
+    <p>teste: {{token}}</p>
     <header-page></header-page>
     <div id="content" class="container">
       <router-view></router-view>
