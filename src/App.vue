@@ -5,22 +5,38 @@ import HeaderPage from './layout/Header';
 import FooterPage from './layout/Footer';
 
 export default {
-  vuex: {
-    getters: {
-      token: (state) => {
-        window.console.log(state);
-        return state.token;
-      },
+  name: 'DavidLearnVue',
+//   vuex: {
+//     getters: {
+//       token: (state) => {
+//         window.console.log(state);
+//         return state.token;
+//       },
+//     },
+//   },
+  computed: {
+    user() {
+      const { name, email } = this.$store.state.user;
+
+      return `O usuário logado é ${name} com email: ${email}`;
+    },
+    mudar() {
+      const payload = {
+        name: 'Maria',
+        email: 'outroemail@masd;com',
+      };
+
+      this.$store.commit('CHANGE_USER', payload);
     },
   },
-  name: 'app',
   components: { HeaderPage, FooterPage },
 };
 </script>
 
 <template>
   <div id="wrapper">
-    <p>teste: {{token}}</p>
+    <p>{{user}}</p>
+    <button @click="mudar()">Mudar</button>
     <header-page></header-page>
     <div id="content" class="container">
       <router-view></router-view>
